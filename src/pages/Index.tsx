@@ -9,6 +9,8 @@ import Lenis from "lenis";
 import LiquidEther from "@/components/ui/LiquidEther";
 import ElectricBorder from "@/components/ui/ElectricBorder";
 import ChromaGrid from "@/components/ui/ChromaGrid";
+
+import CircularGallery from "@/components/ui/CircularGallery";
 import ParticleField from "@/components/ui/ParticleField";
 import ShinyText from "@/components/ui/ShinyText";
 import FloatingBlobs from "@/components/ui/FloatingBlobs";
@@ -377,46 +379,44 @@ const Index = () => {
       </section>
 
       {/* Features */}
-      <section id="features" className="py-32 px-4 relative">
+      <section id="features" className="pt-12 pb-24 px-4 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent" />
          <div className="container mx-auto max-w-6xl relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-20"
+            className="text-center mb-12"
           >
-            <motion.p variants={smoothReveal} custom={0} className="text-sm uppercase tracking-[0.2em] text-white/30 mb-4">
+            <motion.p variants={smoothReveal} custom={0} className="text-sm uppercase tracking-[0.2em] text-white/30 mb-3">
               Platform Capabilities
             </motion.p>
-             <motion.h2 variants={smoothReveal} custom={1} className="text-4xl md:text-5xl font-bold tracking-tight mb-6 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+             <motion.h2 variants={smoothReveal} custom={1} className="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
                <DecryptedText text="Enterprise-Grade Security" speed={50} animateOn="view" characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*" />
              </motion.h2>
             <motion.p variants={smoothReveal} custom={2} className="text-white/40 text-lg max-w-xl mx-auto">
               Everything you need to secure your LLM infrastructure
             </motion.p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                variants={smoothReveal}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                <ElectricBorder color="#7df9ff" speed={1} chaos={0.12} borderRadius={20}>
-                  <div className="electric-card h-full">
-                    <div className="h-10 w-10 rounded-xl bg-white/[0.06] border border-white/[0.08] flex items-center justify-center mb-5">
-                      <f.icon className="h-5 w-5 text-white/70" />
-                    </div>
-                     <h3 className="text-base font-semibold mb-2 text-white/90">{f.title}</h3>
-                     <p className="text-white/40 text-sm leading-relaxed">{f.desc}</p>
-                  </div>
-                </ElectricBorder>
-              </motion.div>
-            ))}
+          <div className="w-full h-[500px] relative flex items-center justify-center">
+            {/* Edge blur overlays — matched to card height */}
+            <div className="absolute left-0 top-[35%] bottom-0 w-12 bg-gradient-to-r from-[#030712] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-[35%] bottom-0 w-12 bg-gradient-to-l from-[#030712] to-transparent z-10 pointer-events-none" />
+            <CircularGallery
+              items={[
+                { image: "", text: "AI Threat Detection", description: "Neural network-powered detection identifies malicious prompt injections with 99.7% accuracy in real-time.", icon: "brain" },
+                { image: "", text: "Advanced Firewall Protection", description: "Multi-layered defense filters every prompt through 12 security checkpoints before reaching your LLM.", icon: "shield" },
+                { image: "", text: "Real-Time Monitoring", description: "SOC-grade live dashboard tracks every interaction, flagging anomalies within milliseconds.", icon: "eye" },
+                { image: "", text: "End-to-End Encryption", description: "AES-256 encryption secures all data in transit and at rest across your entire AI pipeline.", icon: "lock" },
+                { image: "", text: "Cloud Security Shield", description: "Zero-trust architecture protects cloud-deployed models with automated threat containment.", icon: "cloud" },
+                { image: "", text: "Behavioral Threat Analytics", description: "ML-driven behavior profiling detects suspicious user patterns and session anomalies.", icon: "network" },
+                { image: "", text: "Network Defense Layer", description: "DDoS mitigation and rate limiting protect your API endpoints from volumetric attacks.", icon: "zap" },
+                { image: "", text: "AI Security Engine", description: "Autonomous security engine continuously learns and adapts to emerging threat vectors.", icon: "cpu" },
+              ]}
+              bend={4}
+              textColor="#ffffff"
+              borderRadius={0.08}
+            />
           </div>
         </div>
       </section>

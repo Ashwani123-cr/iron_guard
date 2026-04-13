@@ -151,8 +151,8 @@ const WireframeLoader = ({ onComplete }: { onComplete: () => void }) => {
           className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center"
         >
           {/* 3D Canvas */}
-          <div className="w-64 h-64 md:w-80 md:h-80">
-            <Canvas camera={{ position: [0, 0, 4.5], fov: 45 }}>
+          <div className="w-[90vw] h-[90vw] max-w-[500px] max-h-[500px]">
+            <Canvas camera={{ position: [0, 0, 7], fov: 35 }}>
               <ambientLight intensity={0.2} />
               <WireframeShield progress={progress} />
             </Canvas>
